@@ -82,7 +82,7 @@ class Session
 
     private function startSessionIfNotStarted(): void
     {
-        if (session_id()) {
+        if (PHP_SESSION_NONE !== session_status()) {
             return;
         }
 
