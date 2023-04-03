@@ -7,6 +7,7 @@ use Tomrf\Session\SessionException;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 final class SessionTest extends \PHPUnit\Framework\TestCase

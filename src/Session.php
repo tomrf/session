@@ -27,7 +27,6 @@ class Session
     public function get(string $key, $default = null): mixed
     {
         $this->startSessionIfNotStarted();
-        $this->throwExceptionIfClosedForWriting();
 
         return $_SESSION[$key] ?? $default;
     }
@@ -87,6 +86,10 @@ class Session
         }
 
         session_start();
+
+        if (PHP_SESSION_ACTIVE !== session_status()) {
+            throw new SessionException('Failed to start session');
+        }
     }
 
     private function throwExceptionIfClosedForWriting(): void
